@@ -1,0 +1,264 @@
+// Navbar
+// ------
+
+.top-bar {
+	
+	@include background-image(
+		linear-gradient(
+			top, 
+			lighten($navbar-background-color, 3%) 0px, 
+			darken($navbar-background-color, 3%) 100%
+		)
+	);
+	@include box-shadow(0px 1px 2px rgba(0,0,0,0.3));
+	
+	#nav-branding {
+		a {
+			display: block;
+			height: $navbar-height;
+			padding: ($navbar-height - $navbar-branding-font-size) / 2 0;
+			padding-right: $base-font-size;
+			color: $navbar-link-color;
+			font-size: $navbar-branding-font-size;
+			font-weight: bold;
+			line-height: 1;
+			
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.top-bar-links {
+		@include list-reset();
+		@include list-horizontal();
+		margin: 0;
+		
+		> li {
+			
+			> a {
+				display: block;
+				height: $navbar-height;
+				padding: ($navbar-height - $navbar-link-font-size) / 2 $navbar-link-horizontal-padding;
+				color: $navbar-link-color;
+				font-size: $navbar-link-font-size;
+				line-height: 1;
+				
+				&:hover {
+					background-color: darken($navbar-background-color, 10%);
+					text-decoration: none;
+				}
+				
+				&:focus {
+					outline: none;
+				}
+			}
+			
+			&.active {
+				a {
+					background-color: darken($navbar-background-color, 10%);
+				}
+			}
+			
+			&.has-dropdown {
+				> a {
+
+					padding-right: ($navbar-link-horizontal-padding * 1.5) + ($navbar-caret-height * 2);
+
+					.caret {
+						display: block;
+						position: absolute;
+						top: 0;
+						right: $navbar-link-horizontal-padding;
+						width: $navbar-caret-height * 2;
+						height: $navbar-height;
+						
+						&:after {
+							@include css-triangle($navbar-caret-height, $navbar-link-color, top);
+							position: absolute;
+							top: 50%;
+							left: 0;
+							margin-top: -1px;
+						}
+					}
+				}
+				
+				.dropdown {
+					border-top: 0;
+				}
+				
+				&.open {
+					> a {
+						.caret {
+							&:after {
+								@include css-triangle($navbar-caret-height, $base-font-color, top);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	.button {
+		margin-top: ($navbar-height - $button-height) / 2;
+		
+		@include button-custom(
+			$theme: $button-theme, 
+			$background-color: lighten($navbar-background-color, 5%), 
+			$text-color: #fff, 
+			$reversed: true	
+		);
+	}
+}
+
+// ! Top bar fixed to top of viewport
+// ----------------------------------
+
+.fixed-top-bar { // Goes on the body
+	
+	padding-top: $navbar-height;
+	
+	.top-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 5000;		
+	}
+}
+
+// ! Responsive top bar
+// --------------------
+
+@include respond-to(mobile) {
+	
+	#nav-collapse {
+		display: none;
+		position: absolute;
+		top: $navbar-height + 10px;
+		right: $mobile-padding;
+		min-width: 10em;
+		background: #fff;
+		border: 1px solid $border-color;
+		@include border-radius($big-border-radius);
+		@include box-shadow(0px 2px 8px rgba(0,0,0,0.2));
+	}
+	
+	#nav-auth {
+		display: none;
+	}
+	
+	#nav-site {
+		float: none;
+	}
+	
+	.top-bar {
+	
+		.top-bar-links {
+			padding: $tu * 2 0;
+			
+			> li {
+				float: none;
+				
+				> a {
+					height: $mobile-nav-link-height;
+					padding: ($mobile-nav-link-height - $mobile-nav-link-font-size) / 2 $base-font-size;
+					color: $base-font-color;
+					
+					&:hover {
+						background: $blue;
+						color: #fff;
+					}
+				}
+				
+				&.active {
+					> a {
+						background: $blue;
+						color: #fff;
+						
+						&:after {
+							display: none;
+						}
+					}
+				}
+				
+				&:first-child {
+					> a {
+						border-top-color: transparent;
+					}
+				}
+				
+				&.has-dropdown {
+					> a {
+						.caret {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	.open {
+		#nav-collapse {
+			display: block;
+		}
+	}
+}
+
+// ! Tabs
+// ------
+
+.tabs {
+	margin-left: 0;
+	@include clearfix();
+	border-bottom: 1px solid $border-color;
+
+	> li {
+		display: block;
+		float: left;
+		margin: 0 5px -1px 0;
+		list-style-type: none;
+		
+		&:first-child {
+			margin-left: $column-gutter / 2;
+		}
+
+		> a {
+			@include border-radius($big-border-radius $big-border-radius 0 0);
+			@include background-image(
+				linear-gradient(
+					top,
+					$site-background-color 0px,
+					darken($site-background-color, 3%) 100%
+				)
+			);
+			border: 1px solid $border-color;
+			display: block;
+			padding: (40px - 2 - $base-font-size) / 2;
+			color: $base-font-color;
+			font-size: $base-font-size;
+			line-height: 1;
+			text-decoration: none;
+		}
+		
+		&:not(.active):hover {
+			> a {
+				background: darken($site-background-color, 3%);
+			}
+		}
+
+		&.active {
+			> a {
+				background: none;
+				border-color: $border-color $border-color $site-background-color $border-color;
+				color: $muted-font-color;
+				
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}

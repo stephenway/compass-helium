@@ -1,0 +1,150 @@
+// Body text
+// ---------
+
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	color: $base-font-color;
+	font-family: $base-font-family;
+	font-size: $base-font-size;
+	font-size-adjust: none;
+	line-height: $base-line-height;
+}
+
+// Standard block-level elements
+// -----------------------------
+
+p,
+ol,
+ul,
+dl,
+table,
+figure,
+hgroup {
+	margin: 0 0 (4 * $tu);
+}
+
+// Headings
+// --------
+
+h1, h2, h3, h4, h5, h6 {	
+	margin: 0;
+	color: $heading-color;
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+	line-height: 1;
+	text-rendering: optimizelegibility; // Fix the character spacing for headings
+	
+	a {
+		color: $gray-dark;
+	}
+}
+
+h1, h2 {
+	margin: 0 0 (6 * $tu);
+}
+
+h1 {
+	font-size: 36px;
+	letter-spacing: -1px;
+}
+
+h2 {
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+h4, h5, h6 {
+	font-size: $base-font-size;
+}
+
+// Links
+// -----
+
+a {
+	color: $link-color;
+	text-decoration: none;
+	
+	&:hover {
+		color: lighten($link-color, 10%);
+		text-decoration: underline;		
+	}
+}
+
+p a {
+	text-decoration: underline;
+}
+
+// Lists
+// -----
+
+ul, ol {
+	padding: 0;
+	margin-left: $base-font-size;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+	margin-bottom: 0;
+}
+ul ul,
+ol ul {
+	list-style: circle;
+}
+ul {
+	list-style: disc;
+}
+ol {
+	list-style: decimal;
+}
+dl {
+	margin: 0 0 $base-font-size;
+}
+dt {
+	font-weight: bold;
+}
+dd {
+	margin: 0 0 $base-font-size;
+}
+
+// Tables
+// ------
+
+table {
+	width: 100%;
+	border-top: 1px solid $border-color;
+
+	th {
+		font-weight: bold;
+	}
+	th, td {
+		padding: $base-font-size / 2;
+		border-bottom: 1px solid $border-color;
+		text-align: left;
+		
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+	.figure {
+		text-align: right;
+	}
+}
+
+// Code
+// ----
+
+code {
+	font-family: "Consolas", "Courier", monospace;
+}

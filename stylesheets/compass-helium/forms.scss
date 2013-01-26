@@ -1,0 +1,272 @@
+// Forms
+// -----
+
+label,
+input,
+textarea {
+	color: $base-font-color;
+	font-size: $base-font-size;
+	font-family: $base-font-family;
+	font-weight: normal;
+}
+
+// Basic form layouts
+// ------------------
+
+.field-group {
+	margin-bottom: $base-font-size;
+	
+	.field-label {
+		display: block;
+		color: $gray-dark;
+	}
+	
+	.field-instructions {
+		float: none;
+		clear: both;
+		color: $muted-font-color;
+		font-size: $small-font-size;
+		
+		a {
+			color: $muted-font-color;
+			text-decoration: underline;
+		}
+	}
+}
+
+.input-inline {
+	display: inline-block;
+	height: $form-input-height;
+	line-height: $form-input-height;
+}
+
+.multi-field {
+	
+	@include clearfix();
+	
+	input, .input-inline {
+		float: left;
+		margin-right: ($base-font-size / 2) - 2;
+	}
+}
+
+// Left-aligned labels
+// -------------------
+
+
+@media screen and (min-width: $responsive-breakpoint) {
+
+	.labels-left {
+		
+		.field-group {
+			@include clearfix();
+		}
+	
+		.field-label {
+			position: relative;
+			left: $form-input-gutter / 2;
+			line-height: $base-font-size + 2;
+			padding: ($form-input-height - ($base-font-size + 2)) / 2 0;
+			text-align: right;
+		}
+	}
+}
+
+// Text fields and textareas
+// -------------------------
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+	
+	@include border-radius($input-border-radius);
+	@include box-shadow(inset 0px 1px 0px rgba(0,0,0,0.06));
+
+	display: inline-block;
+	height: $form-input-height;
+	width: 100%;
+	max-width: 100%;
+	padding: 0 $base-font-size / 2;
+	border: 1px solid rgba(0,0,0,0.25);
+
+	outline: none;
+	-webkit-appearance: none;
+	
+	&:focus {
+		border-color: $link-color;
+		@include box-shadow(0px 0px 3px rgba($link-color, 0.3));	
+	}
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+textarea {
+	height: auto;
+	min-width: 100%;
+	min-height: $form-input-height;
+	padding: $base-font-size / 2;
+}
+
+@for $i from 1 through 10 {
+  input.char#{$i} { width: ($i * ($base-font-size * 0.75)) + $base-font-size ; }
+}
+
+// Special positioning for select
+// ------------------------------
+
+.select-holder {
+	height: $form-input-height;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+// Placeholders
+// ------------
+
+::-webkit-input-placeholder {
+	color: $placeholder-color; 
+	@include transition($form-transition-duration all);
+}
+
+:-moz-placeholder {
+	color: $placeholder-color;
+	@include transition($form-transition-duration all);
+}
+
+::-webkit-input-placeholder:focus {
+	color: $placeholder-focus-color;
+}
+
+:-moz-placeholder:focus {  
+	color: $placeholder-focus-color;
+}
+
+// Radio and checkbox
+// ------------------
+
+input[type=radio],
+input[type=checkbox] {
+	margin: 0;
+	cursor: pointer;
+}
+
+// Radio and checkbox lists
+// ------------------------
+
+.radio-checkbox-list {
+	@include list-reset();
+	margin-bottom: 0;
+		
+	> li {
+		padding: ($radio-checkbox-item-height - $radio-checkbox-line-height) / 2 0;
+	}
+
+	input[type=radio],
+	input[type=checkbox] {
+		display: block;
+		position: absolute;
+		top: ($radio-checkbox-line-height - $radio-checkbox-input-height) / 2;
+		left: 0px;
+	}
+	
+	label {
+		display: block;
+		position: relative;
+		padding-left: $radio-checkbox-input-height * 1.61;
+		cursor: pointer;
+	}
+	
+	.error-message {
+		margin-left: $radio-checkbox-input-height * 1.61;
+	}
+}
+
+// Single checkboxes
+// -----------------
+
+.single-checkbox {
+	display: block;
+	position: relative;
+	padding: ($base-line-height - ($single-checkbox-font-size * 1.2)) / 2 0 ($base-line-height - ($single-checkbox-font-size * 1.2)) / 2 $radio-checkbox-input-height * 1.61;
+	font-size: $single-checkbox-font-size;
+	line-height: 1.2;
+	cursor: pointer;
+
+	input[type=radio],
+	input[type=checkbox] {
+		display: block;
+		position: absolute;
+		top: ($base-line-height - $radio-checkbox-input-height) / 2;
+		left: 0px;
+	}
+	
+	a {
+		text-decoration: underline;
+	}
+}
+
+// Buttons 
+// -------
+
+button {
+	margin: 0;
+	font-size: 100%;
+	vertical-align: middle;
+//	*overflow: visible; // Inner spacing ie IE6/7
+//	line-height: normal !important; // FF3/4 have !important on line-height in UA stylesheet
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+// Errors
+// ------
+
+.error {
+	label {
+		color: $error-color;
+	}
+	
+	input {
+		border-color: $error-color;
+	}
+	.error-message {
+		@include border-radius($input-border-radius);
+		
+		display: inline-block;
+		position: relative;
+		margin-top: $base-font-size / 2;
+		padding: $base-font-size / 2;
+		background: $error-color;
+		color: #fff;
+		font-size: $small-font-size;
+		line-height: $small-font-size;
+		
+		&:after {
+			position: absolute;
+			top: -12px;
+			left: 10px;
+			@include css-triangle(6px, $error-color, bottom)
+		}
+	}
+}
