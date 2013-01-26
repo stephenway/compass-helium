@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ![compass-helium](http://i.imgur.com/p9qAv.png)
 
 This scaffolding is meant to encourage rapid development with Compass Extensions. Customize everything, make it your own! Build and publishing instructions are in the gemspec file.
@@ -45,3 +46,7 @@ Then verify it's installed.
 ## Credits
 
 This Compass extension for [helium](https://github.com/cbrauckmuller/helium) was created by **[Stephen Way](https://twitter.com/stephencway)**
+=======
+compass-helium
+==============
+>>>>>>> 636b3d6a4ac49ee84755509ba59d0d709298803c
