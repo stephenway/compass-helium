@@ -1,4 +1,4 @@
-# ![compass-helium](http://i.imgur.com/p9qAv.png)
+# compass-helium
 
 This scaffolding is meant to encourage rapid development with Compass Extensions. Customize everything, make it your own! Build and publishing instructions are in the gemspec file.
 
