@@ -46,4 +46,4 @@ Then verify it's installed.
 
 ## Credits
 
-This Compass extension for [helium](https://github.com/cbrauckmuller/helium) was created by **[Stephen Way](https://twitter.com/stephencway)**
+This Compass extension for [helium](https://github.com/cbrauckmuller/helium) was created by **[Stephen Way](https://twitter.com/stephencway)**. Based on [Chris Brauckmuller's helium](https://github.com/cbrauckmuller/helium).
