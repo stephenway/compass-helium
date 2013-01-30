@@ -10,7 +10,7 @@ file 'javascript/jquery.min.js'
 file 'javascript/jquery.min.js'
 file 'fonts/entypo.eot'
 file 'fonts/entypo.svg'
-file 'fonts/entypo.tts'
+file 'fonts/entypo.ttf'
 file 'fonts/entypo.eot'
 
 help %Q{
