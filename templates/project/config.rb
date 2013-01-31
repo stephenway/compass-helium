@@ -4,7 +4,7 @@
 http_path = "/"
 css_dir = "css"
 images_dir = "images"
-javascripts_dir = "js"
+javascripts_dir = "javascript"
 output_style = :expanded
 environment = :development
 relative_assets = true

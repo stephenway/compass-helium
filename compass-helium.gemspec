@@ -1,7 +1,10 @@
 # -*- encoding: utf-8 -*-
 Gem::Specification.new do |s|
+  # Release Specific Information
   s.version         = "0.0.1"
   s.date            = "2013-01-25"
+
+  # Gem Details
   s.name            = "compass-helium"
   s.authors         = ["Stephen"]
   s.email           = ["stephencway@me.com"]
@@ -9,11 +12,14 @@ Gem::Specification.new do |s|
   s.summary         = "A responsive frontend framework that won't weigh you down."
   s.homepage        = "http://github.com/stephenway/compass-helium"
 
+  # Gem Files
   s.files = %w(README.md)
   s.files += Dir.glob("lib/**/*.*")
   s.files += Dir.glob("stylesheets/**/*.*")
   s.files += Dir.glob("templates/**/*.*")
-  s.has_rdoc = false
+
+
+  # Gem Bookkeeping
   s.add_dependency("sass", [">= 3.2"])
   s.add_dependency("compass", [">= 0.12.2"])
 end
